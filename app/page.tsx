@@ -88,6 +88,22 @@ const components = [
       </div>
     ),
   },
+  {
+    name: "Tabs",
+    count: 10,
+    description: "Layered sections with modern animations and styles.",
+    href: "/tabs",
+    preview: (
+      <div className="flex flex-col gap-2 w-full">
+        <div className="flex gap-2">
+          <div className="h-8 w-20 rounded-md bg-primary/10" />
+          <div className="h-8 w-20 rounded-md bg-muted" />
+          <div className="h-8 w-20 rounded-md bg-muted" />
+        </div>
+        <div className="h-24 w-full rounded-lg bg-muted/50" />
+      </div>
+    ),
+  },
 ];
 
 export default function Home() {

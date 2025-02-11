@@ -44,40 +44,6 @@ For detailed setup instructions and configuration options, see our [Setup Guide]
 
 More components coming soon!
 
-## Documentation
-
-Visit our [documentation site](https://lume-ui.vercel.app) to learn more about:
-
-- Component API reference
-- Theme customization
-- Best practices
-- Examples
-- Animations
-- Accessibility
-
-## Development
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-
-# Build library
-pnpm build:lib
-
-# Run tests
-pnpm test
-
-# Start Storybook
-pnpm storybook
-```
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
 ## License
 
 MIT © Rithvik
