@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2024-03-XX
+
+### Added
+
+- CSS file generation and distribution
+- Proper CSS exports in package.json
+
+### Changed
+
+- Updated package structure with .npmignore
+- Added prepublishOnly script for reliable builds
+- Improved build process with CSS minification
+
 ## [1.0.0] - 2024-03-XX
 
 ### Added
