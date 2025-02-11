@@ -110,21 +110,19 @@ export default function BadgePage() {
       ),
     },
     {
-      name: "animations",
-      code: `<div className="flex items-center gap-4">
-  <Badge animation="pulse">Pulse</Badge>
-  <Badge animation="bounce">Bounce</Badge>
-  <Badge animation="ping" className="relative">
-    <span className="absolute animate-ping" />Ping
-  </Badge>
-</div>`,
-      component: (
-        <div className="flex items-center gap-4">
-          <Badge animation="pulse">Pulse</Badge>
-          <Badge animation="bounce">Bounce</Badge>
-          <Badge animation="ping">Ping</Badge>
-        </div>
-      ),
+      name: "animations-pulse",
+      code: `<Badge animation="pulse">Pulse</Badge>`,
+      component: <Badge animation="pulse">Pulse</Badge>,
+    },
+    {
+      name: "animations-bounce",
+      code: `<Badge animation="bounce">Bounce</Badge>`,
+      component: <Badge animation="bounce">Bounce</Badge>,
+    },
+    {
+      name: "animations-ping",
+      code: `<Badge animation="ping">Ping</Badge>`,
+      component: <Badge animation="ping">Ping</Badge>,
     },
   ];
 
@@ -149,23 +147,23 @@ export default function BadgePage() {
         </div>
 
         {/* Badge Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {badgeDemos.map((demo) => (
             <div
               key={demo.name}
-              className="group relative flex flex-col gap-4 rounded-lg border bg-background p-8 hover:border-foreground/10 transition-colors"
+              className="group relative flex flex-col gap-2 rounded-lg border bg-background p-6 hover:border-foreground/10 transition-colors"
             >
-              <div className="flex h-14 items-center justify-center">
+              <div className="flex h-10 items-center justify-center">
                 {demo.component}
               </div>
               <button
                 onClick={() => copyCode(demo.code, demo.name)}
-                className="absolute right-4 top-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+                className="absolute right-3 top-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
               >
                 {copiedId === demo.name ? (
-                  <Check className="h-4 w-4" />
+                  <Check className="h-3.5 w-3.5" />
                 ) : (
-                  <Copy className="h-4 w-4" />
+                  <Copy className="h-3.5 w-3.5" />
                 )}
               </button>
             </div>

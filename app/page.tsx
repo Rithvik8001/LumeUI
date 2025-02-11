@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ArrowRight, Sparkles, Copy, Check, Terminal } from "lucide-react";
@@ -81,23 +83,7 @@ export default function Home() {
             <span className="font-bold text-xl">LumeUI</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2 rounded-full border bg-muted/50 pl-3">
-              <Terminal className="h-4 w-4 text-muted-foreground" />
-              <code className="text-sm font-mono text-muted-foreground">
-                {installCommand}
-              </code>
-              <button
-                onClick={copyToClipboard}
-                className="ml-2 rounded-full p-2 hover:bg-muted-foreground/10 transition-colors"
-              >
-                {copied ? (
-                  <Check className="h-4 w-4 text-green-500" />
-                ) : (
-                  <Copy className="h-4 w-4 text-muted-foreground" />
-                )}
-              </button>
-            </div>
+          <div className="hidden md:flex items-center">
             <ModeToggle />
           </div>
 
@@ -131,6 +117,22 @@ export default function Home() {
                     Beautiful, modern, and type-safe UI components for Next.js
                     applications. Built with Radix UI and Tailwind CSS.
                   </p>
+                  <div className="flex items-center justify-center gap-2 rounded-lg border bg-muted/50 px-4 py-2">
+                    <Terminal className="h-4 w-4 text-muted-foreground" />
+                    <code className="text-sm font-mono text-muted-foreground">
+                      {installCommand}
+                    </code>
+                    <button
+                      onClick={copyToClipboard}
+                      className="ml-2 rounded-full p-1.5 hover:bg-muted-foreground/10 transition-colors"
+                    >
+                      {copied ? (
+                        <Check className="h-4 w-4 text-green-500" />
+                      ) : (
+                        <Copy className="h-4 w-4 text-muted-foreground" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
