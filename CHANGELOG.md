@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2024-03-XX
+
+### Added
+
+- Support for React 19
+
+### Changed
+
+- Updated peer dependencies to include React and React DOM up to version 19
+
 ## [1.0.2] - 2024-03-XX
 
 ### Added
