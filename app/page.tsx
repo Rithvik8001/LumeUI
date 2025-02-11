@@ -1,17 +1,25 @@
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
+import { ArrowRight, Sparkles, Copy, Check, Terminal } from "lucide-react";
+import { useState } from "react";
 
 const components = [
   {
     name: "Buttons",
-    count: 10,
+    count: 27,
     description:
       "Trigger actions with our beautifully crafted button variants.",
     href: "/button",
     preview: (
-      <div className="flex flex-wrap gap-2">
-        <div className="h-9 w-20 rounded-md bg-secondary" />
-        <div className="h-9 w-20 rounded-md bg-primary" />
+      <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col gap-2">
+          <div className="h-9 w-full rounded-md bg-primary" />
+          <div className="h-9 w-full rounded-md bg-secondary" />
+        </div>
+        <div className="flex flex-col gap-2">
+          <div className="h-9 w-full rounded-md border-2 border-primary bg-transparent" />
+          <div className="h-9 w-full rounded-md bg-muted" />
+        </div>
       </div>
     ),
   },
@@ -21,102 +29,164 @@ const components = [
     description: "Status indicators and labels for your content.",
     href: "/badge",
     preview: (
-      <div className="flex flex-wrap gap-2">
-        <div className="h-6 w-16 rounded-full bg-secondary" />
-        <div className="h-6 w-16 rounded-full bg-primary" />
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <div className="h-6 w-full rounded-full bg-primary" />
+          <div className="h-6 w-2/3 rounded-full bg-secondary" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-6 w-2/3 rounded-full bg-muted" />
+          <div className="h-6 w-full rounded-full border-2 border-primary bg-transparent" />
+        </div>
       </div>
     ),
   },
   {
     name: "Inputs",
-    count: 10,
+    count: 12,
     description: "Form controls for capturing user input.",
     href: "/input",
     preview: (
-      <div className="flex flex-col gap-2">
-        <div className="h-9 w-full rounded-md bg-secondary" />
+      <div className="space-y-4 w-full">
+        <div className="h-10 w-full rounded-md bg-secondary/50 backdrop-blur" />
+        <div className="flex gap-2">
+          <div className="h-10 flex-1 rounded-md border-2 border-muted bg-transparent" />
+          <div className="h-10 w-10 rounded-md bg-primary" />
+        </div>
       </div>
     ),
   },
 ];
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+  const installCommand = "npm install lume-ui";
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(installCommand);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen flex-col">
+      {/* Grid Background */}
+      <div className="pointer-events-none fixed inset-0 select-none bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
           {/* Logo - shown on all screens */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5" />
             <span className="font-bold text-xl">LumeUI</span>
           </Link>
 
-          {/* Right side navigation */}
-          <div className="flex items-center space-x-2">
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 rounded-full border bg-muted/50 pl-3">
+              <Terminal className="h-4 w-4 text-muted-foreground" />
+              <code className="text-sm font-mono text-muted-foreground">
+                {installCommand}
+              </code>
+              <button
+                onClick={copyToClipboard}
+                className="ml-2 rounded-full p-2 hover:bg-muted-foreground/10 transition-colors"
+              >
+                {copied ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4 text-muted-foreground" />
+                )}
+              </button>
+            </div>
+            <ModeToggle />
+          </div>
+
+          <div className="md:hidden">
             <ModeToggle />
           </div>
         </div>
       </header>
 
       <main className="flex-1">
-        <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-          <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center px-4 md:px-6">
-            <h1 className="font-heading text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-              Shining the way to{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-                better interfaces
-              </span>
-            </h1>
-            <p className="max-w-[42rem] leading-normal text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl">
-              Beautiful, modern, and type-safe UI components for Next.js
-              applications. Built with Radix UI and Tailwind CSS.
-            </p>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden border-b">
+          <div className="container relative">
+            <div className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center text-center">
+              <div className="relative z-10 max-w-3xl px-4">
+                <div className="absolute -left-4 top-16 h-32 w-32 bg-primary/10 blur-3xl" />
+                <div className="absolute -right-4 bottom-16 h-32 w-32 bg-primary/10 blur-3xl" />
+
+                <div className="space-y-6">
+                  <div className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm">
+                    <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+                    Now in beta
+                  </div>
+                  <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+                    Shining the way to{" "}
+                    <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+                      better interfaces
+                    </span>
+                  </h1>
+                  <p className="mx-auto max-w-[42rem] text-muted-foreground sm:text-xl">
+                    Beautiful, modern, and type-safe UI components for Next.js
+                    applications. Built with Radix UI and Tailwind CSS.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section
-          id="components"
-          className="container space-y-6 py-8 md:py-12 lg:py-24 px-4 md:px-6"
-        >
-          <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-            <h2 className="font-heading text-2xl font-bold leading-[1.1] sm:text-3xl md:text-4xl lg:text-5xl">
-              Components
-            </h2>
-            <p className="max-w-[85%] leading-normal text-muted-foreground text-sm sm:text-base md:text-lg">
-              Beautifully designed components that you can copy and paste into
-              your apps.
-            </p>
-          </div>
+        {/* Components Section */}
+        <section className="border-t">
+          <div className="container py-20">
+            <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+              <h2 className="font-heading text-3xl font-bold sm:text-4xl md:text-5xl">
+                Components
+              </h2>
+              <p className="max-w-[85%] text-muted-foreground sm:text-lg">
+                Beautifully designed components that you can copy and paste into
+                your apps.
+              </p>
+            </div>
 
-          <div className="mx-auto grid justify-center gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[64rem]">
-            {components.map((component) => (
-              <Link
-                key={component.name}
-                href={component.href}
-                className="group relative px-4 py-3 sm:px-6 sm:py-4"
-              >
-                <div className="absolute -inset-y-2 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
-                <div className="relative z-10">
-                  <div className="space-y-2">
-                    <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-                      {component.name}
-                    </h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      {component.count} variants
-                    </p>
-                  </div>
-                  <div className="relative overflow-hidden rounded-lg border bg-background p-2 mt-4">
-                    <div className="flex h-[140px] sm:h-[160px] lg:h-[180px] flex-col justify-between rounded-md p-4 sm:p-6">
-                      <p className="text-sm text-muted-foreground">
-                        {component.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {component.preview}
+            <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {components.map((component) => (
+                <Link
+                  key={component.name}
+                  href={component.href}
+                  className="group relative flex flex-col"
+                >
+                  <div className="relative flex flex-1 flex-col overflow-hidden rounded-xl border bg-background/80 p-6 transition-all hover:shadow-lg backdrop-blur-sm">
+                    {/* Card Header */}
+                    <div className="mb-6 flex items-start justify-between">
+                      <div>
+                        <h3 className="text-xl font-semibold">
+                          {component.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {component.count} variants
+                        </p>
+                      </div>
+                      <div className="rounded-full bg-primary/10 p-2 transition-colors group-hover:bg-primary/20">
+                        <ArrowRight className="h-4 w-4" />
                       </div>
                     </div>
+
+                    {/* Preview Area */}
+                    <div className="relative flex-1 overflow-hidden rounded-lg border bg-muted/40 p-4">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                      <div className="relative h-full">{component.preview}</div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="mt-4 text-sm text-muted-foreground">
+                      {component.description}
+                    </p>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>
