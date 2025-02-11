@@ -62,6 +62,36 @@ const config: Config = {
         mono: ["var(--font-geist-mono)"],
         heading: ["var(--font-geist-sans)"],
       },
+      keyframes: {
+        "gradient-xy": {
+          "0%, 100%": {
+            "background-size": "400% 400%",
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "100% 100%",
+          },
+        },
+        shake: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "10%, 30%, 50%, 70%, 90%": { transform: "translateX(-2px)" },
+          "20%, 40%, 60%, 80%": { transform: "translateX(2px)" },
+        },
+        magnetic: {
+          "0%": {
+            transform: "translate(-100%, 100%)",
+          },
+          "100%": {
+            transform: "translate(0, 0)",
+          },
+        },
+      },
+      animation: {
+        "gradient-xy": "gradient-xy 15s ease infinite",
+        shake: "shake 0.5s ease-in-out",
+        magnetic: "magnetic 0.5s ease-in-out",
+      },
     },
   },
   plugins: [],

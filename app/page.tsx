@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Github } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 
 const components = [

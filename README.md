@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LumeUI
 
-## Getting Started
+A modern, beautiful, and type-safe UI component library for Next.js applications.
 
-First, run the development server:
+## Features
+
+- 🎨 Beautiful and modern design
+- 📦 Ready-to-use components
+- 🌙 Dark mode support
+- 🎯 Type-safe with TypeScript
+- 📱 Responsive and mobile-first
+- ♿️ Accessible components
+- 🚀 Built with Radix UI primitives
+- 🎭 Customizable with Tailwind CSS
+- 🔥 Animations and transitions
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install lume-ui
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```tsx
+import { Button } from "lume-ui";
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+export default function App() {
+  return <Button variant="primary">Click me</Button>;
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For detailed setup instructions and configuration options, see our [Setup Guide](SETUP.md).
 
-## Learn More
+## Components
 
-To learn more about Next.js, take a look at the following resources:
+### Button
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Multiple variants (primary, secondary, outline, ghost, etc.)
+- Different sizes (sm, md, lg)
+- Icon support
+- Loading state
+- Beautiful animations
+- Badge support
+- Hover effects
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+More components coming soon!
 
-## Deploy on Vercel
+## Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit our [documentation site](https://lume-ui.vercel.app) to learn more about:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Component API reference
+- Theme customization
+- Best practices
+- Examples
+- Animations
+- Accessibility
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build library
+pnpm build:lib
+
+# Run tests
+pnpm test
+
+# Start Storybook
+pnpm storybook
+```
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## License
+
+MIT © [Your Name]

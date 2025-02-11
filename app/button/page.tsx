@@ -1,60 +1,214 @@
 "use client";
+
 import Link from "next/link";
 import {
   ArrowLeft,
   Copy,
   Check,
-  ChevronRight,
   Github,
-  ExternalLink,
+  Calendar,
+  Plus,
+  Share2,
+  Bell,
+  Heart,
 } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
-export default function ButtonPage() {
-  const [copied, setCopied] = useState(false);
-
-  const copyCode = (code: string) => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const buttonCode = `import { cn } from "@/lib/utils"
-import { ButtonHTMLAttributes } from "react"
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "secondary" | "outline" | "ghost" | "link" | "destructive"
-  size?: "default" | "sm" | "lg" | "icon"
+interface ButtonDemo {
+  name: string;
+  code: string;
+  component: React.ReactNode;
 }
 
-export function Button({
-  className,
-  variant = "default",
-  size = "default",
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cn(
-        "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-        {
-          "bg-primary text-primary-foreground hover:bg-primary/90": variant === "default",
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80": variant === "secondary",
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground": variant === "outline",
-          "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
-          "text-primary underline-offset-4 hover:underline": variant === "link",
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90": variant === "destructive",
-          "h-10 px-4 py-2": size === "default",
-          "h-9 rounded-md px-3": size === "sm",
-          "h-11 rounded-md px-8": size === "lg",
-          "h-10 w-10": size === "icon",
-        },
-        className
-      )}
-      {...props}
-    />
-  )
-}`;
+export default function ButtonPage() {
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const copyCode = (code: string, id: string) => {
+    navigator.clipboard.writeText(code);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const buttonDemos: ButtonDemo[] = [
+    {
+      name: "primary",
+      code: `<Button>Primary</Button>`,
+      component: <Button>Primary</Button>,
+    },
+    {
+      name: "secondary",
+      code: `<Button variant="secondary">Secondary</Button>`,
+      component: <Button variant="secondary">Secondary</Button>,
+    },
+    {
+      name: "outline",
+      code: `<Button variant="outline">Outline</Button>`,
+      component: <Button variant="outline">Outline</Button>,
+    },
+    {
+      name: "ghost",
+      code: `<Button variant="ghost">Ghost</Button>`,
+      component: <Button variant="ghost">Ghost</Button>,
+    },
+    {
+      name: "destructive",
+      code: `<Button variant="destructive">Delete</Button>`,
+      component: <Button variant="destructive">Delete</Button>,
+    },
+    {
+      name: "link",
+      code: `<Button variant="link">Link</Button>`,
+      component: <Button variant="link">Link</Button>,
+    },
+    {
+      name: "gradient",
+      code: `<Button variant="gradient">Gradient</Button>`,
+      component: <Button variant="gradient">Gradient</Button>,
+    },
+    {
+      name: "loading",
+      code: `<Button disabled><span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" /><span className="ml-2">Loading</span></Button>`,
+      component: (
+        <Button disabled>
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+          <span className="ml-2">Loading</span>
+        </Button>
+      ),
+    },
+    {
+      name: "icon-only",
+      code: `<Button size="icon"><Plus className="h-4 w-4" /></Button>`,
+      component: (
+        <Button size="icon">
+          <Plus className="h-4 w-4" />
+        </Button>
+      ),
+    },
+    {
+      name: "with-icon",
+      code: `<Button icon={<Calendar className="h-4 w-4" />}>Schedule</Button>`,
+      component: (
+        <Button icon={<Calendar className="h-4 w-4" />}>Schedule</Button>
+      ),
+    },
+    {
+      name: "pill",
+      code: `<Button size="pill">Pill Button</Button>`,
+      component: <Button size="pill">Pill Button</Button>,
+    },
+    {
+      name: "glow",
+      code: `<Button variant="glow" animation="pulse">Glow Effect</Button>`,
+      component: (
+        <Button variant="glow" animation="pulse">
+          Glow Effect
+        </Button>
+      ),
+    },
+    {
+      name: "neon",
+      code: `<Button variant="neon">Neon</Button>`,
+      component: <Button variant="neon">Neon</Button>,
+    },
+    {
+      name: "retro",
+      code: `<Button variant="retro">Retro Style</Button>`,
+      component: <Button variant="retro">Retro Style</Button>,
+    },
+    {
+      name: "shine",
+      code: `<Button animation="shine">Shine Effect</Button>`,
+      component: <Button animation="shine">Shine Effect</Button>,
+    },
+    {
+      name: "social-share",
+      code: `<Button icon={<Share2 className="h-4 w-4" />} variant="secondary">Share</Button>`,
+      component: (
+        <Button icon={<Share2 className="h-4 w-4" />} variant="secondary">
+          Share
+        </Button>
+      ),
+    },
+    {
+      name: "notification",
+      code: `<Button size="icon" badge="3"><Bell className="h-4 w-4" /></Button>`,
+      component: (
+        <Button size="icon" badge="3">
+          <Bell className="h-4 w-4" />
+        </Button>
+      ),
+    },
+    {
+      name: "favorite",
+      code: `<Button variant="outline" icon={<Heart className="h-4 w-4 transition-colors group-hover:fill-red-500 group-hover:text-red-500" />}>Favorite</Button>`,
+      component: (
+        <Button
+          variant="outline"
+          icon={
+            <Heart className="h-4 w-4 transition-colors group-hover:fill-red-500 group-hover:text-red-500" />
+          }
+        >
+          Favorite
+        </Button>
+      ),
+    },
+    {
+      name: "glassmorphic",
+      code: `<Button variant="glassmorphic">Glassmorphic</Button>`,
+      component: <Button variant="glassmorphic">Glassmorphic</Button>,
+    },
+    {
+      name: "morphing",
+      code: `<Button variant="morphing">Morphing Colors</Button>`,
+      component: <Button variant="morphing">Morphing Colors</Button>,
+    },
+    {
+      name: "cyber",
+      code: `<Button variant="cyber">Access Granted</Button>`,
+      component: <Button variant="cyber">Access Granted</Button>,
+    },
+    {
+      name: "liquid",
+      code: `<Button variant="liquid">Liquid Effect</Button>`,
+      component: <Button variant="liquid">Liquid Effect</Button>,
+    },
+    {
+      name: "paper",
+      code: `<Button variant="paper">Paper Style</Button>`,
+      component: <Button variant="paper">Paper Style</Button>,
+    },
+    {
+      name: "threed",
+      code: `<Button variant="threed">3D Button</Button>`,
+      component: <Button variant="threed">3D Button</Button>,
+    },
+    {
+      name: "minimal",
+      code: `<Button variant="minimal">Minimal</Button>`,
+      component: <Button variant="minimal">Minimal</Button>,
+    },
+    {
+      name: "magnetic",
+      code: `<Button variant="magnetic">Magnetic</Button>`,
+      component: <Button variant="magnetic">Magnetic</Button>,
+    },
+    {
+      name: "bounce-animation",
+      code: `<Button animation="bounce">Bounce</Button>`,
+      component: <Button animation="bounce">Bounce</Button>,
+    },
+    {
+      name: "shake-animation",
+      code: `<Button animation="shake">Shake</Button>`,
+      component: <Button animation="shake">Shake</Button>,
+    },
+    {
+      name: "spin-animation",
+      code: `<Button animation="spin">Spin</Button>`,
+      component: <Button animation="spin">Spin</Button>,
+    },
+  ];
 
   return (
     <div className="container max-w-[85rem] py-6 lg:py-10">
@@ -76,113 +230,26 @@ export function Button({
           </div>
         </div>
 
-        {/* Preview Section */}
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold tracking-tight">Preview</h2>
+        {/* Button Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {buttonDemos.map((demo) => (
+            <div
+              key={demo.name}
+              className="group relative flex flex-col items-center gap-4 rounded-lg border bg-background p-8 hover:border-foreground/10 transition-colors"
+            >
+              {demo.component}
               <button
-                onClick={() => copyCode(buttonCode)}
-                className="inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4"
+                onClick={() => copyCode(demo.code, demo.name)}
+                className="absolute right-4 top-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
               >
-                {copied ? (
-                  <>
-                    <Check className="h-4 w-4" />
-                    Copied!
-                  </>
+                {copiedId === demo.name ? (
+                  <Check className="h-4 w-4" />
                 ) : (
-                  <>
-                    <Copy className="h-4 w-4" />
-                    Copy code
-                  </>
+                  <Copy className="h-4 w-4" />
                 )}
               </button>
             </div>
-            <div className="flex flex-col gap-4">
-              <div className="rounded-lg border bg-background p-8">
-                <div className="flex flex-wrap gap-4">
-                  <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                    Primary
-                  </button>
-                  <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
-                    Secondary
-                  </button>
-                  <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-10 px-4 py-2">
-                    Destructive
-                  </button>
-                  <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2">
-                    Outline
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Variants Section */}
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold tracking-tight">Variants</h2>
-            <div className="rounded-lg border bg-background p-8">
-              <div className="flex flex-wrap gap-4">
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
-                  Ghost
-                </button>
-                <button className="inline-flex items-center justify-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline h-10 px-4 py-2">
-                  Link
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 w-10 p-0">
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#24292F] text-primary-foreground hover:bg-[#24292F]/90 h-10 px-4 py-2">
-                  <Github className="h-4 w-4" />
-                  Login with Github
-                </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                  Open
-                  <ExternalLink className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Sizes Section */}
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold tracking-tight">Sizes</h2>
-            <div className="rounded-lg border bg-background p-8">
-              <div className="flex flex-wrap items-center gap-4">
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3">
-                  Small
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                  Default
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8">
-                  Large
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* States Section */}
-          <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-semibold tracking-tight">States</h2>
-            <div className="rounded-lg border bg-background p-8">
-              <div className="flex flex-wrap items-center gap-4">
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                  Default
-                </button>
-                <button
-                  disabled
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-                >
-                  Disabled
-                </button>
-                <button className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                  <span className="ml-2">Loading</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
