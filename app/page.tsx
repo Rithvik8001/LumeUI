@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Menu } from "lucide-react";
+import { Github } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 
 const components = [
@@ -8,7 +8,7 @@ const components = [
     count: 10,
     description:
       "Trigger actions with our beautifully crafted button variants.",
-    href: "/docs/components/button",
+    href: "/button",
     preview: (
       <div className="flex flex-wrap gap-2">
         <div className="h-9 w-20 rounded-md bg-secondary" />
@@ -20,7 +20,7 @@ const components = [
     name: "Badges",
     count: 10,
     description: "Status indicators and labels for your content.",
-    href: "/docs/components/badge",
+    href: "/badge",
     preview: (
       <div className="flex flex-wrap gap-2">
         <div className="h-6 w-16 rounded-full bg-secondary" />
@@ -32,7 +32,7 @@ const components = [
     name: "Inputs",
     count: 10,
     description: "Form controls for capturing user input.",
-    href: "/docs/components/input",
+    href: "/input",
     preview: (
       <div className="flex flex-col gap-2">
         <div className="h-9 w-full rounded-md bg-secondary" />
@@ -45,55 +45,15 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <div className="mr-4 hidden md:flex">
-            <Link className="mr-6 flex items-center space-x-2" href="/">
-              <span className="font-bold inline-block text-xl">LumeUI</span>
-            </Link>
-            <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link
-                href="/docs"
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-              >
-                Documentation
-              </Link>
-              <Link
-                href="/components"
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-              >
-                Components
-              </Link>
-              <Link
-                href="/themes"
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-              >
-                Themes
-              </Link>
-            </nav>
-          </div>
-          {/* Mobile Logo */}
-          <div className="md:hidden">
-            <Link href="/" className="flex items-center">
-              <span className="font-bold text-xl">LumeUI</span>
-            </Link>
-          </div>
-          <div className="flex flex-1 items-center justify-end space-x-2">
-            <nav className="flex items-center space-x-2">
-              <Link
-                href="https://github.com/yourusername/lume-ui"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0"
-              >
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-              <ModeToggle />
-              <button className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 py-2 w-9 px-0 md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Menu</span>
-              </button>
-            </nav>
+        <div className="container flex h-14 items-center justify-between">
+          {/* Logo - shown on all screens */}
+          <Link href="/" className="flex items-center">
+            <span className="font-bold text-xl">LumeUI</span>
+          </Link>
+
+          {/* Right side navigation */}
+          <div className="flex items-center space-x-2">
+            <ModeToggle />
           </div>
         </div>
       </header>
@@ -111,22 +71,6 @@ export default function Home() {
               Beautiful, modern, and type-safe UI components for Next.js
               applications. Built with Radix UI and Tailwind CSS.
             </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
-              <Link
-                href="/docs"
-                className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-11 px-8 text-sm font-medium w-full sm:w-auto"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="https://github.com/yourusername/lume-ui"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-11 px-8 text-sm font-medium w-full sm:w-auto"
-              >
-                GitHub
-              </Link>
-            </div>
           </div>
         </section>
 
