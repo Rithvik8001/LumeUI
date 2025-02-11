@@ -1,6 +1,6 @@
 {
   "name": "lume-ui",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "A modern, beautiful, and type-safe UI component library for React",
   "author": "Rithvik",
   "license": "MIT",
@@ -15,11 +15,22 @@
     "components",
     "typescript",
     "tailwindcss",
-    "radix-ui"
+    "radix-ui",
+    "design-system",
+    "component-library",
+    "react-components"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css"
+  },
   "sideEffects": false,
   "files": [
     "dist/**"

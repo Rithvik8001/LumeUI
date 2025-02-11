@@ -7,4 +7,7 @@ export default defineConfig({
   clean: true,
   external: ["react"],
   inject: ["react-shim.js"],
+  tsconfig: "tsconfig.lib.json",
+  treeshake: true,
+  sourcemap: true,
 });
