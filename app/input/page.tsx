@@ -104,17 +104,68 @@ export default function InputPage() {
       ),
     },
     {
+      name: "glassmorphic",
+      code: `<Input variant="glassmorphic" placeholder="Glassmorphic input" />`,
+      component: (
+        <Input variant="glassmorphic" placeholder="Glassmorphic input" />
+      ),
+    },
+    {
+      name: "neon",
+      code: `<Input variant="neon" placeholder="Neon input" />`,
+      component: <Input variant="neon" placeholder="Neon input" />,
+    },
+    {
+      name: "retro",
+      code: `<Input variant="retro" placeholder="Retro input" />`,
+      component: <Input variant="retro" placeholder="Retro input" />,
+    },
+    {
+      name: "cyber",
+      code: `<Input variant="cyber" placeholder="SYSTEM.INPUT" />`,
+      component: <Input variant="cyber" placeholder="SYSTEM.INPUT" />,
+    },
+    {
+      name: "minimal",
+      code: `<Input variant="minimal" placeholder="Minimal input" />`,
+      component: <Input variant="minimal" placeholder="Minimal input" />,
+    },
+    {
+      name: "paper",
+      code: `<Input variant="paper" placeholder="Paper input" />`,
+      component: <Input variant="paper" placeholder="Paper input" />,
+    },
+    {
+      name: "with-prefix",
+      code: `<Input prefix="$" placeholder="Enter amount" />`,
+      component: <Input prefix="$" placeholder="Enter amount" />,
+    },
+    {
+      name: "with-suffix",
+      code: `<Input suffix=".00" placeholder="Price" />`,
+      component: <Input suffix=".00" placeholder="Price" />,
+    },
+    {
+      name: "loading",
+      code: `<Input isLoading placeholder="Loading..." />`,
+      component: <Input isLoading placeholder="Loading..." />,
+    },
+    {
       name: "sizes",
       code: `<div className="flex flex-col gap-4">
-  <Input inputSize="sm" placeholder="Small input" />
-  <Input inputSize="default" placeholder="Default input" />
-  <Input inputSize="lg" placeholder="Large input" />
+  <Input inputSize="xs" placeholder="Extra small" />
+  <Input inputSize="sm" placeholder="Small" />
+  <Input inputSize="default" placeholder="Default" />
+  <Input inputSize="lg" placeholder="Large" />
+  <Input inputSize="xl" placeholder="Extra large" />
 </div>`,
       component: (
         <div className="flex flex-col gap-4">
-          <Input inputSize="sm" placeholder="Small input" />
-          <Input inputSize="default" placeholder="Default input" />
-          <Input inputSize="lg" placeholder="Large input" />
+          <Input inputSize="xs" placeholder="Extra small" />
+          <Input inputSize="sm" placeholder="Small" />
+          <Input inputSize="default" placeholder="Default" />
+          <Input inputSize="lg" placeholder="Large" />
+          <Input inputSize="xl" placeholder="Extra large" />
         </div>
       ),
     },
