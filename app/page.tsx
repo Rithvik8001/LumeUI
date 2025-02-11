@@ -27,7 +27,7 @@ const components = [
   },
   {
     name: "Badges",
-    count: 10,
+    count: 13,
     description: "Status indicators and labels for your content.",
     href: "/badge",
     preview: (
@@ -54,6 +54,22 @@ const components = [
         <div className="flex gap-2">
           <div className="h-10 flex-1 rounded-md border-2 border-muted bg-transparent" />
           <div className="h-10 w-10 rounded-md bg-primary" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    name: "Dropdowns",
+    count: 11,
+    description:
+      "Versatile selection menus with multiple variants and features.",
+    href: "/dropdown",
+    preview: (
+      <div className="space-y-4 w-full">
+        <div className="h-10 w-full rounded-md bg-background border" />
+        <div className="space-y-2">
+          <div className="h-8 w-full rounded-md bg-accent/50" />
+          <div className="h-8 w-2/3 rounded-md bg-accent/30" />
         </div>
       </div>
     ),

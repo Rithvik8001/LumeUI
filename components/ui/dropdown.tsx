@@ -11,24 +11,25 @@ const dropdownVariants = cva(
     variants: {
       variant: {
         default: "shadow-sm",
-        ghost:
-          "border-none shadow-none focus-within:ring-0 focus-within:ring-offset-0",
-        underline:
-          "rounded-none border-0 border-b border-input bg-transparent focus-within:ring-0 focus-within:ring-offset-0 focus-within:border-primary",
-        pill: "rounded-full",
-        modern:
-          "border-0 bg-secondary/50 focus-within:ring-0 focus-within:ring-offset-0 focus-within:bg-secondary",
-        material:
-          "border-0 border-b-2 border-muted bg-transparent focus-within:ring-0 focus-within:ring-offset-0 focus-within:border-primary transition-colors",
-        glassmorphic:
-          "border-0 bg-white/10 backdrop-blur-md focus-within:ring-0 focus-within:ring-offset-0 focus-within:bg-white/20",
-        neon: "border-2 border-[#39FF14] bg-black text-[#39FF14] focus-within:ring-[#39FF14] focus-within:ring-offset-0 focus-within:shadow-[0_0_20px_rgba(57,255,20,0.5)]",
-        retro:
-          "rounded-none border-2 border-b-4 border-r-4 border-black focus-within:ring-0 focus-within:translate-x-[2px] focus-within:translate-y-[2px] focus-within:border-b-2 focus-within:border-r-2 transition-all",
-        cyber:
-          "border-[#00ff00] bg-black text-[#00ff00] font-mono tracking-wider focus-within:ring-[#00ff00] focus-within:shadow-[0_0_10px_#00ff00]",
-        minimal:
-          "border-0 border-b border-border bg-transparent rounded-none focus-within:ring-0 focus-within:border-primary hover:border-foreground",
+        floating:
+          "border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-lg [&>div]:rounded-lg hover:[&>div]:border-primary/50",
+        command:
+          "border-none bg-secondary/50 backdrop-blur-sm focus-within:ring-0 focus-within:ring-offset-0 [&>div]:px-4 [&>div]:py-3 [&>div]:font-mono [&>div:before]:content-['>'] [&>div:before]:mr-2 [&>div:before]:text-primary/50",
+        scale:
+          "overflow-hidden border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-sm [&>div]:transition-transform hover:[&>div]:scale-[1.02] active:[&>div]:scale-[0.98]",
+        magnetic:
+          "border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-sm [&>div]:transition-all hover:[&>div]:translate-x-0.5 hover:[&>div]:translate-y-0.5",
+        gooey:
+          "border-none bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 p-[1px] focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:backdrop-blur-xl before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-500 before:via-purple-500 before:to-pink-500 before:animate-gradient-xy before:opacity-0 hover:before:opacity-100",
+        reveal:
+          "border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-sm [&>div]:transition-all [&>div]:delay-150 hover:[&>div]:translate-y-[-2px] hover:[&>div]:shadow-lg",
+        neo: "border-2 border-foreground bg-background shadow-[4px_4px_0px_0px] shadow-foreground focus-within:ring-0 focus-within:ring-offset-0 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all",
+        glass:
+          "bg-background/30 backdrop-blur-md border-white/20 shadow-lg focus-within:ring-0 focus-within:ring-offset-0 hover:bg-background/40 transition-colors [&>div]:text-foreground",
+        portal:
+          "border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)] [&>div]:transition-all hover:[&>div]:shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
+        pulse:
+          "border-none bg-transparent shadow-none focus-within:ring-0 focus-within:ring-offset-0 [&>div]:bg-background [&>div]:border [&>div]:shadow-sm hover:[&>div]:animate-[pulse_1s_ease-in-out]",
       },
       size: {
         default: "h-10",
