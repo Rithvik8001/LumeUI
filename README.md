@@ -30,7 +30,9 @@ pnpm add lume-ui
 bun add lume-ui
 ```
 
-2. Add the following to your `tailwind.config.js`:
+2. Add the following to your Tailwind config:
+
+For JavaScript (tailwind.config.js):
 
 ```js
 const { withLume } = require("lume-ui/plugin");
@@ -40,14 +42,35 @@ module.exports = withLume({
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/lume-ui/dist/**/*.{js,ts,jsx,tsx}",
   ],
 });
 ```
 
-3. Import and use components:
+For TypeScript (tailwind.config.ts):
 
-```jsx
+```ts
+import { withLume } from "lume-ui/plugin";
+import type { Config } from "tailwindcss";
+
+const config: Config = withLume({
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+});
+
+export default config;
+```
+
+3. Import the styles in your root layout or global CSS:
+
+```tsx
+import "lume-ui/styles.css";
+```
+
+4. Import and use components:
+
+```tsx
 import { Button } from "lume-ui";
 
 export default function Page() {
@@ -63,6 +86,22 @@ export default function Page() {
 - **Dropdowns** - 11 variants
 - **Popovers** - 11 variants
 - **Tabs** - 10 variants
+
+## Theme Support
+
+LumeUI comes with built-in light and dark mode support. To enable theme switching:
+
+```tsx
+import { ThemeProvider } from "lume-ui";
+
+export default function RootLayout({ children }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      {children}
+    </ThemeProvider>
+  );
+}
+```
 
 ## License
 
