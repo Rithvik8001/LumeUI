@@ -1,6 +1,6 @@
 {
   "name": "lume-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A modern, beautiful, and type-safe UI component library for React",
   "author": "Rithvik",
   "license": "MIT",
@@ -29,7 +29,12 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/index.css"
+    "./styles.css": "./dist/index.css",
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.mjs",
+      "require": "./dist/plugin/index.js"
+    }
   },
   "sideEffects": false,
   "files": [

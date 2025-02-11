@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2024-03-XX
+
+### Added
+
+- Tailwind plugin support with `withLume` function
+- Proper plugin exports in package.json
+- Support for both JavaScript and TypeScript Tailwind configs
+
 ## [1.0.1] - 2024-03-XX
 
 ### Added
