@@ -1,0 +1,37 @@
+# Source
+app/
+public/
+components/
+lib/
+
+# Config files
+.eslintrc
+.prettierrc
+tsconfig.json
+tsconfig.lib.json
+tsup.config.ts
+next.config.js
+postcss.config.js
+tailwind.config.ts
+
+# Development
+node_modules/
+.next/
+.storybook/
+storybook-static/
+coverage/
+.vercel/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+*.log
+.DS_Store
+.env*
+*.tsbuildinfo
