@@ -74,6 +74,20 @@ const components = [
       </div>
     ),
   },
+  {
+    name: "Popovers",
+    count: 11,
+    description: "Floating panels with various animations and styles.",
+    href: "/popover",
+    preview: (
+      <div className="flex h-full w-full items-center justify-center rounded-lg border bg-background p-6">
+        <div className="flex flex-col items-center gap-2">
+          <div className="h-8 w-24 rounded-md bg-primary/10" />
+          <div className="h-20 w-48 rounded-lg bg-muted shadow-lg" />
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export default function Home() {
