@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ArrowRight, Sparkles, Copy, Check, Terminal } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const components = [
   {
@@ -108,10 +109,19 @@ const components = [
 
 export default function Home() {
   const [copied, setCopied] = useState(false);
-  const installCommand = "npm install lume-ui";
+  const [selectedPkg, setSelectedPkg] = useState<
+    "npm" | "yarn" | "pnpm" | "bun"
+  >("npm");
+
+  const installCommands = {
+    npm: "npm install lume-ui",
+    yarn: "yarn add lume-ui",
+    pnpm: "pnpm add lume-ui",
+    bun: "bun add lume-ui",
+  } as const;
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(installCommand);
+    navigator.clipboard.writeText(installCommands[selectedPkg]);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -151,7 +161,8 @@ export default function Home() {
                 <div className="space-y-6">
                   <div className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm">
                     <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-primary"></span>
-                    Now in beta
+                    Introducing LumeUI 1.0{" "}
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </div>
                   <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                     Shining the way to{" "}
@@ -160,13 +171,33 @@ export default function Home() {
                     </span>
                   </h1>
                   <p className="mx-auto max-w-[42rem] text-muted-foreground sm:text-xl">
-                    Beautiful, modern, and type-safe UI components for Next.js
-                    applications. Built with Radix UI and Tailwind CSS.
+                    Beautiful, modern, and type-safe UI components for React.
+                    Built with Radix UI and Tailwind CSS.
                   </p>
                   <div className="flex items-center justify-center gap-2 rounded-lg border bg-muted/50 px-4 py-2">
+                    <div className="flex items-center gap-2 border-r pr-2 mr-2">
+                      {Object.keys(installCommands).map((pkg) => (
+                        <button
+                          key={pkg}
+                          onClick={() =>
+                            setSelectedPkg(
+                              pkg as "npm" | "yarn" | "pnpm" | "bun"
+                            )
+                          }
+                          className={cn(
+                            "text-xs font-mono transition-colors",
+                            selectedPkg === pkg
+                              ? "text-foreground"
+                              : "text-muted-foreground hover:text-foreground"
+                          )}
+                        >
+                          {pkg}
+                        </button>
+                      ))}
+                    </div>
                     <Terminal className="h-4 w-4 text-muted-foreground" />
                     <code className="text-sm font-mono text-muted-foreground">
-                      {installCommand}
+                      {installCommands[selectedPkg]}
                     </code>
                     <button
                       onClick={copyToClipboard}
@@ -179,6 +210,31 @@ export default function Home() {
                       )}
                     </button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trusted By Section */}
+        <section className="border-t">
+          <div className="container py-16">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold">
+                Trusted by hundreds of developers
+              </h2>
+              <div className="mt-8 flex justify-center">
+                <div className="flex -space-x-4">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-background"
+                      style={{
+                        backgroundImage: `url(https://api.dicebear.com/7.x/avataaars/svg?seed=${i})`,
+                        backgroundSize: "cover",
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -237,6 +293,30 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* More Components Coming Soon */}
+        <section className="border-t">
+          <div className="container py-16">
+            <div className="text-center">
+              <h2 className="text-2xl font-bold">
+                More Components & Variants Coming Soon
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                We're constantly working on new components and variants to make
+                your UI even better.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t py-8">
+          <div className="container flex items-center justify-center">
+            <p className="text-sm text-muted-foreground">
+              Made with <span className="text-red-500">❤️</span> by Rithvik
+            </p>
+          </div>
+        </footer>
       </main>
     </div>
   );

@@ -1,49 +1,73 @@
 # LumeUI
 
-A modern, beautiful, and type-safe UI component library for Next.js applications.
+A modern, beautiful, and type-safe UI component library for React. Built with Radix UI and Tailwind CSS.
 
 ## Features
 
-- 🎨 Beautiful and modern design
-- 📦 Ready-to-use components
-- 🌙 Dark mode support
-- 🎯 Type-safe with TypeScript
-- 📱 Responsive and mobile-first
-- ♿️ Accessible components
-- 🚀 Built with Radix UI primitives
-- 🎭 Customizable with Tailwind CSS
-- 🔥 Animations and transitions
+- 🎨 Beautiful, modern components
+- 🔒 Type-safe with TypeScript
+- 🎭 Multiple variants for each component
+- 📱 Responsive and accessible
+- 🎯 Easy to customize
+- 🚀 Built on Radix UI primitives
+- 🎨 Styled with Tailwind CSS
 
 ## Quick Start
 
+1. Install the package:
+
 ```bash
+# npm
 npm install lume-ui
+
+# yarn
+yarn add lume-ui
+
+# pnpm
+pnpm add lume-ui
+
+# bun
+bun add lume-ui
 ```
 
-```tsx
+2. Add the following to your `tailwind.config.js`:
+
+```js
+const { withLume } = require("lume-ui/plugin");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = withLume({
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/lume-ui/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+});
+```
+
+3. Import and use components:
+
+```jsx
 import { Button } from "lume-ui";
 
-export default function App() {
-  return <Button variant="primary">Click me</Button>;
+export default function Page() {
+  return <Button variant="default">Click me</Button>;
 }
 ```
 
-For detailed setup instructions and configuration options, see our [Setup Guide](SETUP.md).
+## Available Components
 
-## Components
-
-### Button
-
-- Multiple variants (primary, secondary, outline, ghost, etc.)
-- Different sizes (sm, md, lg)
-- Icon support
-- Loading state
-- Beautiful animations
-- Badge support
-- Hover effects
-
-More components coming soon!
+- **Buttons** - 27 variants
+- **Badges** - 13 variants
+- **Inputs** - 12 variants
+- **Dropdowns** - 11 variants
+- **Popovers** - 11 variants
+- **Tabs** - 10 variants
 
 ## License
 
 MIT © Rithvik
+
+---
+
+Made with ❤️ by Rithvik
